@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Dart Game - Golf Swing POC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        #gameContainer {
+            flex: 1;
+            position: relative;
+        }
+        
+        #babylonCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        #swingMeter {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 10;
+            display: none;
+        }
+        
+        #swingMeterFill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4CAF50, #FFC107, #FF5722);
+            transition: width 0.05s;
+        }
+        
+        #swingLabel {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+            display: none;
+        }
+        
+        #score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        #instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="babylonCanvas"></canvas>
+        <div id="ui">
+            <div>Dart Game POC</div>
+            <div id="instructions">
+                <strong>Controls:</strong><br>
+                Mouse Down + Drag Down = Pull Back (Power)<br>
+                Release = Throw Dart<br>
+                R = Reset
+            </div>
+        </div>
+        <div id="swingLabel">SWING IN PROGRESS</div>
+        <div id="swingMeter">
+            <div id="swingMeterFill"></div>
+        </div>
+        <div id="score">Score: 0</div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
